@@ -9,11 +9,11 @@ export distdir_exchanger
 export distdir_verbose
 export set_config_exchanger
 export set_config_verbose
+export t_idxlist_jl
+export new_idxlist
+export delete_idxlist
 
-const libdistdir = "libdistdir"
-const libmpi = "libmpi"
-libdistdir_handle = C_NULL
-libmpi_handle = C_NULL
+include("idxlist.jl")
 
 @enum distdir_exchanger begin
 	IsendIrecv1 = 0
@@ -52,13 +52,6 @@ end
 
 function new_group(new_comm :: MPI.Comm, work_comm :: MPI.Comm, id :: Int)
 	@ccall libdistdir.new_group(new_comm :: Ref{MPI.Comm}, work_comm :: MPI.Comm, id :: Cint)::Cvoid
-end
-
-function __init__()
-	libmpi_hamndle = Libdl.dlopen(libmpi, Libdl.RTLD_LAZY | Libdl.RTLD_GLOBAL)
-	libdistdir_handle = Libdl.dlopen(libdistdir, Libdl.RTLD_LAZY | Libdl.RTLD_GLOBAL)
-
-	println("libdistdir successfully opened !")
 end
 
 end

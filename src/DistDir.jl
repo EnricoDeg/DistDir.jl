@@ -15,8 +15,12 @@ export delete_idxlist
 export t_map_jl
 export new_map
 export delete_map
+export t_exchanger_jl
+export new_exchanger
+export delete_exchanger
+export exchanger_go
 
-include("map.jl")
+include("exchanger.jl")
 
 @enum distdir_exchanger begin
 	IsendIrecv1 = 0

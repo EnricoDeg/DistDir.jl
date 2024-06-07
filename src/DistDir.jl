@@ -12,8 +12,11 @@ export set_config_verbose
 export t_idxlist_jl
 export new_idxlist
 export delete_idxlist
+export t_map_jl
+export new_map
+export delete_map
 
-include("idxlist.jl")
+include("map.jl")
 
 @enum distdir_exchanger begin
 	IsendIrecv1 = 0
